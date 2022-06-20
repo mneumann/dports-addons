@@ -17,6 +17,12 @@ RUN_DEPENDS=	opensmtpd>=6.6.0:mail/opensmtpd
 
 LIB_DEPENDS=	libopensmtpd.so:mail/libopensmtpd
 
+USES=	gmake
+
+post-patch:
+	${RM} ${BUILD_WRKSRC}/Makefile
+	${MV} ${BUILD_WRKSRC}/Makefile.gnu ${BUILD_WRKSRC}/Makefile
+
 post-build:
 	${MV} ${WRKSRC}/filter-dkimsign ${WRKSRC}/opensmtpd-filter-dkimsign
 	${MV} ${WRKSRC}/filter-dkimsign.8 ${WRKSRC}/opensmtpd-filter-dkimsign.8
