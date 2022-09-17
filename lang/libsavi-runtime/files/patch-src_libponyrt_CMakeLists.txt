@@ -1,0 +1,11 @@
+--- src/libponyrt/CMakeLists.txt.orig	2022-09-17 12:06:00 UTC
++++ src/libponyrt/CMakeLists.txt
+@@ -151,7 +151,7 @@ if(PONY_RUNTIME_BITCODE)
+     list(APPEND _ll_bc_all ${_ll_except_src})
+ 
+     add_custom_target(libponyrt_bc ALL
+-        ${libponyrt_SOURCE_DIR}/../../build/libs/bin/llvm-link -o "${libponyrt_BINARY_DIR}/libponyrt.bc" ${_ll_bc_all}
++        ${LLVM_LINK} -o "${libponyrt_BINARY_DIR}/libponyrt.bc" ${_ll_bc_all}
+         DEPENDS ${_ll_bc_all}
+     )
+ 
